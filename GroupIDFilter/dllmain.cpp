@@ -1,4 +1,5 @@
 #include <cocos2d.h>
+#include <cocos-ext.h>
 #include "MinHook.h"
 #include "Editor.h"
 #include <iostream>
