@@ -1,0 +1,3 @@
+[submodule "gd.h"]
+	path = gd.h
+	url = https://github.com/poweredbypie/gd.h
