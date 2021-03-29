@@ -6,3 +6,4 @@
 - [Andre](https://github.com/AndreNIH) for making the Cappuccino SDK
 - [HJFod](https://github.com/HJFod) for making BrownAlertDelegate.hpp
 - [Camden](https://github.com/camden314) for general bugfixing help
+- [mat](https://github.com/matcool) for a better button
