@@ -1,7 +1,7 @@
 #include "GroupIDInputLayer.h"
 
 void GroupIDInputLayer::setup() {
-	m_pTextInput = (CustomTextInputNode*)gd::CCTextInputNode::create("id", this, "bigFont.fnt", 40.f, 30.f);;
+	m_pTextInput = (CustomTextInputNode*)gd::CCTextInputNode::create("id", this, "bigFont.fnt", 50.f, 40.f);;
 	m_pTextInput->setAllowedChars("1234567890");
 	m_pTextInput->setLabelPlaceholderColor({ 200, 200, 200 });
 	m_pTextInput->setMaxLabelLength(3);
@@ -16,7 +16,7 @@ void GroupIDInputLayer::setup() {
 	auto pathBG = extension::CCScale9Sprite::create("square02b_small.png");
 	pathBG->setColor({ 0, 0, 0 });
 	//pathBG->setPosition(m_pLrSize.width / 2, m_pLrSize.height / 2);
-	pathBG->setContentSize({ 40.f, 30.f });
+	pathBG->setContentSize({ 50.f, 40.f });
 	pathBG->setOpacity(75);
 
 	auto winSize = cocos2d::CCDirector::sharedDirector()->getWinSize();
