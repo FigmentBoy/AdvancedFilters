@@ -66,7 +66,7 @@ int __fastcall Editor::hkInit(CCLayer* self, void*, void* b) {
 
 	CCMenu* menu = CCMenu::createWithItem(btn);
 	auto winSize = CCDirector::sharedDirector()->getWinSize();
-	menu->setPosition(winSize.width - 135, winSize.height - 60);
+	menu->setPosition(winSize.width - 140, winSize.height - 60);
 	
 
 	self->addChild(menu);
