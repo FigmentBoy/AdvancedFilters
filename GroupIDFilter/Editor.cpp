@@ -55,7 +55,7 @@ int __fastcall Editor::hkInit(CCLayer* self, void*, void* b) {
 	auto sprite = CCSprite::create("GJ_button_01.png");
 
 	CCMenuItemSpriteExtra* btn = CCMenuItemSpriteExtra::create(sprite, sprite, self, menu_selector(GroupIDInputLayer::onOpen));
-	btn->setScale(0.85);
+	btn->setScale(0.8);
 
 	auto size = btn->getContentSize();
 
