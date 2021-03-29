@@ -52,25 +52,21 @@ void __fastcall Editor::hkSelectObjects(CCLayer* self, void*, CCArray* b, bool s
 int __fastcall Editor::hkInit(CCLayer* self, void*, void* b) {
 	int res = init(self, b);
 
-	auto image = new CCImage;
-	image->initWithImageFile("square01_001.png");
-
-	auto texture = new CCTexture2D;
-	texture->initWithImage(image);
-
-	auto sprite = CCSprite::createWithTexture(texture);
+	auto sprite = CCSprite::create("GJ_button_01.png");
 
 	CCMenuItemSpriteExtra* btn = CCMenuItemSpriteExtra::create(sprite, sprite, self, menu_selector(GroupIDInputLayer::onOpen));
-	btn->setScale(0.375);
+	btn->setScale(0.85);
 
 	auto size = btn->getContentSize();
 
 	auto title = cocos2d::CCLabelBMFont::create("ID", "bigFont.fnt");
-	title->setPosition(size / 2);
+	title->setPosition({ size.width / 2.f, size.height / 2.f + 1.f }); // the + 1.f is very important, it keeps my sanity
+	title->setScale(0.75);
 	btn->addChild(title);
 
 	CCMenu* menu = CCMenu::createWithItem(btn);
-	menu->setPosition(65, 210);
+	auto winSize = CCDirector::sharedDirector()->getWinSize();
+	menu->setPosition(65, winSize.height - 110);
 	
 	self->addChild(menu);
 	return res;
