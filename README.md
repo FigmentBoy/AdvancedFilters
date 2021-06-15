@@ -1,4 +1,4 @@
-# GroupIDFilter
+# Advanced Filters (Previously: GroupIDFilter)
 ### Special thanks
 - [Pennutoh](https://twitter.com/pennubar) for approaching me with this idea
 - [JonathanGD](https://twitter.com/JonathanChep) for LOTS of new ideas for the mod
