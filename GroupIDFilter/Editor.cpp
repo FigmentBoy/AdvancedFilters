@@ -1,47 +1,86 @@
 #include "Editor.h"
 #include "GroupIDInputLayer.h"
-void __fastcall Editor::hkSelectObject(CCLayer* self, void*, void* b, bool something) {
-	short* addy = *(short**)((uintptr_t)b + 0x3F4);
+#include "GameObject.h"
 
-	if (id == 0) {
-		return selectObject(self, b, something);
-	}
-	if (addy != nullptr) {
-		for (int i = 0; i < 10; i++) {
-			if (addy[i] == id) {
-				return selectObject(self, b, something);
+bool check(GameObject* obj) {
+	if (Editor::filter_id) {
+		short count = obj->getGroupIDCount();
+		bool has_id = false;
+
+		if (count != 0) {
+			for (int i = 0; i < count; i++) {
+				if (obj->getGroupID(i) == Editor::id) {
+					has_id = true;
+				}
 			}
 		}
+
+		if (!has_id) {
+			return false;
+		}
 	}
-	
+
+	if (Editor::filter_scale) {
+		if (obj->getScale() != Editor::scale) {
+			return false;
+		}
+	}
+
+	if (Editor::filter_color_id_1) {
+		if (!obj->getBaseColor() || obj->getBaseColor()->colorID != Editor::color_id_1) {
+			return false;
+		}
+	}
+
+	if (Editor::filter_color_id_2) {
+		if (!obj->getDetailColor() || obj->getDetailColor()->colorID != Editor::color_id_2) {
+			return false;
+		}
+	}
+
+	if (Editor::filter_z_order) {
+		if (obj->getZOrder() != Editor::z_order) {
+			return false;
+		}
+
+	}
+
+	if (Editor::filter_z_layer) {
+		if (obj->getZLayer() % 2 == 0 || obj->getZLayer() != Editor::z_layer) {
+			return false;
+		}
+	}
+
+	if (Editor::filter_high_detail) {
+		if (!obj->isHighDetail()) {
+			return false;
+		}
+	}
+
+	if (Editor::filter_low_detail) {
+		if (obj->isHighDetail()) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+void __fastcall Editor::hkSelectObject(CCLayer* self, void*, gd::GameObject* b, bool something) {
+	if (check((GameObject*)b)) {
+		return selectObject(self, b, something);
+	}
 }
 
 
 void __fastcall Editor::hkSelectObjects(CCLayer* self, void*, CCArray* b, bool something) {
-	if (id == 0) {
-		return selectObjects(self, b, something);
-	}
-
 	int i = 0;
 	while (i < b->count()) {
-		short* addy = *(short**)((uintptr_t)b->objectAtIndex(i) + 0x3F4);
-
-		if (addy != nullptr) {
-			bool has = false;
-			for (int j = 0; j < 10; j++) {
-				if (addy[j] == id) {
-					has = true;
-				}
-			}
-
-			if (!has) {
-				b->removeObjectAtIndex(i);
-			}
-			else {
-				i++;
-			}
-		} else {
+		if (!check((GameObject*)b->objectAtIndex(i))) {
 			b->removeObjectAtIndex(i);
+		}
+		else {
+			i++;
 		}
 	}
 	

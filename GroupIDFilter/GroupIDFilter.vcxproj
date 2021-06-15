@@ -558,6 +558,8 @@
     <ClInclude Include="BrownAlertDelegate.hpp" />
     <ClInclude Include="CustomTextInputNode.h" />
     <ClInclude Include="Editor.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GetPlaceholderLabelTextInputNode.h" />
     <ClInclude Include="GroupIDInputLayer.h" />
     <ClInclude Include="MinHook.h" />
     <ClInclude Include="TouchDetector.h" />

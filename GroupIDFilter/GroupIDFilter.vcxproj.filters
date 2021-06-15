@@ -1226,6 +1226,12 @@
     <ClInclude Include="..\cappuccino-sdk\incl\extensions\spine\spine.h">
       <Filter>Cappuccino-SDK</Filter>
     </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GetPlaceholderLabelTextInputNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="libMinHook-x86-v141-mtd.lib">

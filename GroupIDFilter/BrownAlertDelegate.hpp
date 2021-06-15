@@ -42,8 +42,7 @@ protected:
 
         setup();
 
-        auto closeSpr = cocos2d::CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
-        closeSpr->setScale(.8f);
+        auto closeSpr = gd::ButtonSprite::create("OK", 0, false, "goldFont.fnt", "GJ_button_01.png", 0, 1);
 
         auto closeBtn = gd::CCMenuItemSpriteExtra::create(
             closeSpr,
@@ -54,7 +53,7 @@ protected:
 
         this->m_pButtonMenu->addChild(closeBtn);
 
-        closeBtn->setPosition(-_w / 2, _h / 2);
+        closeBtn->setPosition(0, -_h/2 + 32);
 
         this->setKeypadEnabled(true);
         this->setTouchEnabled(true);
